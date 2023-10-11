@@ -21,6 +21,7 @@ jobs:
         target: ["android-arm", "android-arm64", "android-x64"]
 
     steps:
+      # You can remove this step if you've updated env.MODULE_NAME above!
       - name: Assert env.MODULE_NAME is set
         if: ${{ env.MODULE_NAME == '' }}
         run: echo "env.MODULE_NAME must be set" && exit 1
