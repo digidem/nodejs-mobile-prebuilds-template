@@ -8,6 +8,11 @@ on:
 
 env:
   NODE_VERSION: 18
+  # (OPTIONAL) Only needed if the module does not use N-API
+  # Needs to match to the corresponding Node version used by NodeJS Mobile
+  # NodeJS Mobile runtime version: https://github.com/nodejs-mobile/nodejs-mobile/blob/main/src/node_mobile_version.h
+  # ABI mapping reference: https://github.com/nodejs-mobile/nodejs-mobile/blob/main/doc/abi_version_registry.json
+  # NODE_ABI: 108
   MODULE_NAME: "" # Update this line with the name of the module as published on npm
   MODULE_VERSION: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
 
@@ -68,7 +73,7 @@ jobs:
 
       - name: Derive release artifact name
         id: artifact-name
-        # If you need the node abi version included, add something like node-<abi> in the string
+        # If you need the node abi version included, add something like node-${{ env.NODE_ABI }} in the string
         run: echo "NAME=${{ env.MODULE_NAME }}-${{ env.MODULE_VERSION }}-${{ matrix.TARGET }}" >> "$GITHUB_OUTPUT"
 
       - name: Prepare release artifact
