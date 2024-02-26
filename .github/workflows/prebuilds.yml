@@ -18,7 +18,6 @@ env:
 
 jobs:
   build:
-    if: ${{ github.env.MODULE_VERSION != '' }}
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     strategy:
@@ -31,6 +30,10 @@ jobs:
       - name: Assert env.MODULE_NAME is set
         if: ${{ env.MODULE_NAME == '' }}
         run: echo "env.MODULE_NAME must be set" && exit 1
+
+      - name: Assert env.MODULE_VERSION is set
+        if: ${{ env.MODULE_VERSION == '' }}
+        run: echo "env.MODULE_VERSION must be set" && exit 1
 
       - uses: actions/checkout@v4
 
