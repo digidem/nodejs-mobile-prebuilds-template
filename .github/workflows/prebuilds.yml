@@ -55,7 +55,7 @@ jobs:
         working-directory: ./package
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-        run: npx --yes prebuild-for-nodejs-mobile@18.17.7 ${{ matrix.target }}
+        run: npx --yes prebuild-for-nodejs-mobile@18.17.7 ${{ matrix.target }} --verbose
 
       - name: Upload original prebuild artifacts # mostly for debugging purposes
         uses: actions/upload-artifact@v3
