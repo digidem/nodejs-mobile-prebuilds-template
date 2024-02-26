@@ -17,7 +17,7 @@ Template repository for building and publishing [NodeJS Mobile](https://github.c
 
 ### Requirements
 
-- Node >= 16 and npm < 9
+- Node 18
 - Android NDK 24.0.8215888
   - (optional) exported `ANDROID_NDK_PATH` environment variable
 
