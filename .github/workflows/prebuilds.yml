@@ -66,14 +66,9 @@ jobs:
 
       ### The below steps are needed for the release job
 
-      # (OPTIONAL) This is only needed if the module does not use n-api. Labelling the artifact with the node abi version is then necessary for version compatiability reasons
-      # - name: Set NODE_ABI env var
-      # Use the version associated with the runtime that comes with Nodejs Mobile (can see list here: https://github.com/nodejs-mobile/nodejs-mobile/blob/main/doc/abi_version_registry.json)
-      # run: echo "NODE_ABI=108" >> "$GITHUB_ENV"
-
       - name: Derive release artifact name
         id: artifact-name
-        # If you need the node abi version included, add something like node-${{ env.NODE_ABI }} in the string
+        # If you need the node abi version included, add something like node-<abi> in the string
         run: echo "NAME=${{ env.MODULE_NAME }}-${{ env.MODULE_VERSION }}-${{ matrix.TARGET }}" >> "$GITHUB_OUTPUT"
 
       - name: Prepare release artifact
