@@ -32,10 +32,6 @@ jobs:
         if: ${{ env.MODULE_NAME == '' }}
         run: echo "env.MODULE_NAME must be set" && exit 1
 
-      - name: Assert env.MODULE_VERSION is set
-        if: ${{ env.MODULE_VERSION == '' }}
-        run: echo "env.MODULE_VERSION must be set" && exit 1
-
       - uses: actions/checkout@v4
 
       - name: Setup NDK
